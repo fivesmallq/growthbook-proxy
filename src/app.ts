@@ -68,6 +68,12 @@ export const growthBookProxy = async (
 
   const ctx: Context = { ...defaultContext, ...context };
   app.locals.ctx = ctx;
+  const config = {
+    title: 'GrowthBook Proxy Status',
+    path: '/766ef35d9b8d4adfade3e7abbd959441/status',
+    ignoreStartsWith: '/admin',
+  }
+  app.use(require('express-status-monitor')(config));
 
   // initialize
   initializeLogger(ctx);
